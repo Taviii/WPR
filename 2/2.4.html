@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<form method="post">
+<p>Podaj liczbę do sprawdzenia:</p>
+        <input type="numer" name="number">
+        <input type="submit" value="Sprawdź!" name="sprawdz">
+</form>
+
+<?php
+if (isset($_POST["sprawdz"])) {
+    $numer = (int)$_POST["number"];
+    $sqrtNumer = (int)sqrt($numer);
+         czyPierwsza($numer, $sqrtNumer);
+}
+function czyPierwsza($numer, $sqrtNumer) {
+    $iter = 0;
+    for ($i = 2; $i <= $sqrtNumer; $i++) {
+        $iter++;
+
+        if ($numer % $i == 0) {
+            break;
+        }
+    }
+    if( $sqrtNumer == $i-1 ) {
+         echo " $sqrtNumer to liczba pierwsza.";
+         echo "Ilość iteracji to: $iter";
+    } else {
+        echo " $ssqrtNumer nie jest liczbą pierwszą.";
+         echo "Ilość iteracji to: $iter";
+    }
+}
+?>
+</body>
+</html>
